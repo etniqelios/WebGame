@@ -1,0 +1,583 @@
+/*! HTML5 Boilerplate v9.0.1 | MIT License | https://html5boilerplate.com/ */
+
+/* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+  resize: vertical;
+}
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+:root {
+  --main-color: rgb(114 34 203);
+}
+
+@font-face {
+  font-family: 'Silkscreen'; /*a name to be used later*/
+  src: url('fonts/Silkscreen/slkscr.ttf'); /*URL to font*/
+}
+
+* {
+  font-family: Silkscreen;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.body-background {
+  background-image: url("img/background-hq.png");
+  background-size: 110px;
+  background-position: center;
+}
+
+.banner-background {
+  width: 100%;
+  height: 250px;
+  background-image: url("img/banner-blue.png");
+  background-size: 2000px;
+
+  background-position: center;
+  animation: infinite 300s animation;
+  transition: animation;
+
+  border-bottom: 4px dashed #222222;
+}
+
+.banner-background-shadow {
+  width: 100%;
+  height: 250px;
+
+
+  position: relative;
+  top: -250px;
+
+  background-image: url("img/banner-blue.png");
+  background-size: 2000px;
+
+  filter: blur(202px);
+  background-position: center;
+  animation: infinite 300s animation;
+  transition: animation;
+}
+
+@keyframes animation {
+  0% {
+    background-position-x: 100px;
+    background-position-y: 100px;
+  }
+  100% {
+    background-position-x: 10000px;
+    background-position-y: 10000px;
+  }
+}
+
+.index-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: -500px;
+}
+
+
+.container-left {
+  z-index: 1;
+  height: 400px;
+
+}
+.container-right{
+  z-index: 1;
+
+  height: 400px;
+
+}
+
+.header {
+  font-size: larger;
+
+  overflow: hidden;
+
+  width: 630px;
+  justify-self: center;
+
+  margin-top: 100px;
+
+  height: 210px;
+
+  text-align: center;
+  color: #b3d4fc;
+
+  background-image: url("img/empty-background.png");
+  background-size: 400px;
+  background-position: center;
+  box-shadow:  0 0 32px 0 rgba(0, 0, 0, 0.53);
+
+  border: 4px dashed rgba(128, 128, 128, 0.12);
+  z-index: 2;
+}
+
+.information {
+  overflow: hidden;
+
+  width: 630px;
+  justify-self: center;
+
+  margin-top: 30px;
+
+  height: 40px;
+  text-align: center;
+  font-size: larger;
+  color: #b3d4fc;
+
+  background-image: url("img/empty-background.png");
+  background-size: 400px;
+  background-position: center;
+  box-shadow:  0 0 32px 0 rgba(0, 0, 0, 0.53);
+
+  border: 4px dashed rgba(128, 128, 128, 0.12);
+  z-index: 1;
+}
+
+.links {
+  overflow: hidden;
+
+  width: 630px;
+  justify-self: center;
+
+  margin-top: 15px;
+
+  height: 40px;
+  text-align: center;
+  font-size: larger;
+  color: #b3d4fc;
+
+  background-image: url("img/empty-background.png");
+  background-size: 400px;
+  background-position: center;
+  box-shadow:  0 0 32px 0 rgba(0, 0, 0, 0.53);
+
+  border: 4px dashed rgba(128, 128, 128, 0.12);
+  z-index: 1;
+}
+
+
+.information-select {
+  padding: 5px;
+  border: 1px solid rgba(0,0,0,0);
+  cursor: pointer;
+}
+
+.links-select {
+  padding: 5px;
+  border: 1px solid rgba(0,0,0,0);
+  cursor: pointer;
+}
+
+.information-content, .links-content {
+  padding: 10px;
+}
+
+.information-select:hover, .links-select:hover {
+  border: 1px solid #b3d4fc;
+}
+
+.information-list-button, .links-list-button {
+  float: left;
+}
+
+.information-title {
+  position: relative;
+  left: -170px;
+}
+
+ .links-title {
+  position: relative;
+  left: -195px;
+}
+
+.information-select:hover .information-title {
+  text-decoration: underline;
+}
+
+.links-select:hover .links-title {
+  text-decoration: underline;
+}
+
+.section-up {
+  font-size: larger;
+
+  float: left;
+
+  width: 800px;
+
+  margin-top: 100px;
+  margin-left: 30px;
+
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  color: #b3d4fc;
+  background-image: url("img/empty-background.png");
+
+  background-position: center;
+  box-shadow:  0 0 32px 0 rgba(0, 0, 0, 0.5);
+
+  border: 4px dashed rgba(128, 128, 128, 0.12);
+
+  height: 700px;
+  text-align: center;
+  background-size: 400px;
+}
+
+.main-header {
+  padding: 25px;
+  height: 25px;
+}
+
+.main-header-title {
+  float: left;
+  color: rgba(128, 128, 128, 0.12);
+}
+
+.main-info {
+  border: 4px dashed rgba(128, 128, 128, 0.12);
+  float: right;
+
+}
+
+.main-info a {
+  border: 1px solid rgba(0,0,0,0);
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  text-align: center;
+}
+
+.main-info a:hover {
+  border: 1px solid #b3d4fc;
+text-decoration: underline;
+}
+.main-welcome {
+  margin-top: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding: 5px;
+  background: #1F1F1F;
+  border-bottom: 4px solid #1C1C1C;
+  height: 100px;
+  text-align: left;
+  font-size: small;
+}
+
+.main-welcome pre {
+  margin: 0;
+}
+
+.main-title {
+  color: rgba(128, 128, 128, 0.12);
+  margin-top: 50px;
+  padding: 25px;
+  float: left;
+}
+
+.main-description {
+}
+
+.image-section {
+  clear: both;
+}
+
+.header-buttons {
+  height: 100px;
+  display: grid;
+  justify-content: center;
+}
+
+.header-description {
+  margin: 25px;
+  display: grid;
+  justify-content: center;
+  position: relative;
+}
+.icon-download {
+  padding-top: 10px;
+}
+
+.game-infos {
+  font-size: 17px;
+  color: #407c8d;
+}
+
+.button-download {
+  border: 0;
+  background-color: #407c8d;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  position: relative;
+  border-bottom: 4px solid #2d5866;
+  font-size: larger;
+  top: 0;
+  color: black;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.button-download:hover {
+  background-color: #58aac2;
+  color: #ffffff;
+  box-shadow: 0 0 16px 0 #58aac2;
+}
+
+.button-download:focus {
+  background-color: #58aac2;
+  border-bottom: 0 solid #2d5866;
+  color: #1a343a;
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden,
+[hidden] {
+  display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ */
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  /* 1 */
+}
+
+/*
+ * Extends the .visually-hidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visually-hidden.focusable:active,
+.visually-hidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  white-space: inherit;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+  visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * The use of `table` rather than `block` is only necessary if using
+ * `::before` to contain the top-margins of child elements.
+ */
+
+.clearfix::before,
+.clearfix::after {
+  content: "";
+  display: table;
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 1.25dppx),
+  (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   https://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: #fff !important;
+    color: #000 !important;
+    /* Black prints faster */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+   * Don't show links that are fragment identifiers,
+   * or use the `javascript:` pseudo protocol
+   */
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+
