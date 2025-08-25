@@ -255,7 +255,45 @@ body {
   cursor: pointer;
 }
 
-.information-content, .links-content {
+.link {
+  list-style: none;
+  float: left;
+  width: auto;
+  padding: 5px;
+
+  margin: 10px;
+}
+
+.links-content {
+  justify-items: center;
+  padding: 10px;
+}
+
+.youtube {
+  background: #932828;
+  border-bottom: 4px solid #4d1919;
+  color: #fdd6d6;
+}
+
+.github{
+  background: #284693;
+  border-bottom: 4px solid #19254d;
+  color: #d6e4fd;
+}
+
+.soundcloud {
+  background: #934d28;
+  border-bottom: 4px solid #4d3319;
+  color: #fdead6;
+}
+.discord {
+  background: #285693;
+  border-bottom: 4px solid #19314d;
+  color: #d6dffd;
+}
+
+
+.information-content {
   padding: 10px;
 }
 
@@ -283,6 +321,36 @@ body {
 
 .links-select:hover .links-title {
   text-decoration: underline;
+}
+
+.left-content {
+  width: 45%;
+  padding: 5px;
+  float: left;
+  height: auto;
+  margin-right: 5%;
+  background: #1F1F1F;
+  border-bottom: 4px solid #1C1C1C;
+}
+
+.right-content {
+  width: 45%;
+  padding: 5px;
+  float: left;
+  height: auto;
+  background: #1F1F1F;
+  border-bottom: 4px solid #1C1C1C;
+}
+
+.bottom-content {
+  width: 97%;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  float: left;
+  height: auto;
+  background: #1F1F1F;
+  border-bottom: 4px solid #1C1C1C;
 }
 
 .section-up {
@@ -341,25 +409,31 @@ body {
   border: 1px solid #b3d4fc;
 text-decoration: underline;
 }
-.main-welcome {
+.code-window {
   margin-top: 10px;
   margin-left: 50px;
   margin-right: 50px;
   padding: 5px;
   background: #1F1F1F;
   border-bottom: 4px solid #1C1C1C;
-  height: 100px;
+  height: auto;
   text-align: left;
   font-size: small;
 }
 
-.main-welcome pre {
-  margin: 0;
+.output-code {
+  text-align: left;
+  font-size: small;
+  padding: 5px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
+
 
 .main-title {
   color: rgba(128, 128, 128, 0.12);
-  margin-top: 50px;
   padding: 25px;
   float: left;
 }
@@ -420,6 +494,150 @@ text-decoration: underline;
   color: #1a343a;
 }
 
+.footer-fixed {
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  background-image: url("img/empty-background.png");
+  background-position: center;
+  color: #b3d4fc;
+  bottom: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  z-index: 10;
+  box-shadow: 0 0 16px 0 rgba(0,0,0,0.3);
+  border-top: 4px dashed rgba(128, 128, 128, 0.12);
+}
+
+.logo-window {
+  padding: 25px;
+  width: 150px;
+  height: auto;
+  position: absolute;
+  float: left;
+  background-image: url("img/empty-background.png");
+  background-position: center;
+  border: 4px dashed rgba(128, 128, 128, 0.12);
+  box-shadow: 0 0 16px 0 rgba(0,0,0,0.3);
+  bottom: 25px;
+  left: 20px;
+  text-align: center;
+}
+
+.banner-title {
+  text-align: center;
+  color: white;
+  padding-top: 25px;
+  padding-bottom: 50px;
+  font-size: 300%;
+}
+
+.download-section {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.72);
+  position: absolute;
+
+  z-index: 1000;
+}
+
+.download-window {
+  position: fixed;
+  padding: 25px;
+
+  width: auto;
+  height: auto;
+
+  justify-self: center;
+  top: 25%;
+  text-align: center;
+
+  color: #b3d4fc;
+
+  background-image: url("img/empty-background.png");
+  background-position: center;
+  border: 4px dashed rgba(128, 128, 128, 0.12);
+  box-shadow: 0 0 16px 0 rgba(0,0,0,0.3);
+
+}
+
+.close-download-window {
+
+  width: 14px;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-bottom: 2px;
+  padding-top: 3px;
+  margin-right: 10px;
+  text-align: center;
+
+  position: relative;
+  background-image: url("img/empty-background.png");
+  background-position: center;
+  border: 4px dashed rgba(128, 128, 128, 0.12);
+}
+
+.close-download-window:hover {
+  filter: sepia(100%);
+}
+
+/* ==========================================================================
+   <span> color classes and texts
+   ========================================================================== */
+pre {margin: 0;}
+.cpp_code {margin: 0;}
+.cpp_code .include {color: #009dff;}
+.cpp_code .lib_type {color: #D0464AFF}
+.cpp_code .var-int {color: #009DFFFF}
+.cpp_code .function {color: #B08D4DFF}
+.cpp_code .type {color: #B3D4FC}
+.cpp_code .operators {color: #A5A5BC}
+.cpp_code .str-value {color: #328436}
+.cpp_code .newline {color: #009DFFFF}
+
+.debian_terminal .user {color: #2b9363}
+.debian_terminal .monkey {color: #2b9363}
+.debian_terminal .server {color: #2b9363}
+.debian_terminal .directory {color: #1d5da6}
+.debian_terminal .dollar{color: #c3d2cd}
+.debian_terminal .text{color: #c3d2cd}
+.debian_terminal .text-animation-input{
+  color: #c3d2cd;
+  animation: infinite none 1s text-aniation-terminal;
+}
+
+
+@keyframes text-aniation-terminal {
+  0% {color: rgba(0, 0, 0, 0)}
+  50% {color: #c3d2cd}
+  100% {color: rgba(0, 0, 0, 0)}
+}
+
+
+
+.--span-gray {
+  color: gray;
+}
+
+.--span-white {
+  color: white;
+}
+.--span-B3D4FC {
+  color: #B3D4FC;
+}
+.--span-009DFFFF {
+  color: #009DFFFF;
+}
+
+.--span-58AAC2 {
+  color: #58aac2;
+}
+.txt-center {text-align: center}
+.txt-left {text-align: left}
+.txt-wrapping {text-wrap: auto}
+
+.txt-large {font-size: 30px}
+.txt-small {font-size: 15px}
 /* ==========================================================================
    Helper classes
    ========================================================================== */

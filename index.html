@@ -1,31 +1,48 @@
+<!--
 
+      creator web: Etniqelios
+      - HTML, CSS, DESIGN
 
+!-->
 <!doctype html>
 <html class="no-js" lang="pl">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+  <title>WebGame</title>
   <link rel="stylesheet" href="css/style.css">
   <meta name="description" content="">
-
   <meta property="og:title" content="">
   <meta property="og:type" content="">
   <meta property="og :url" content="">
   <meta property="og:image" content="">
   <meta property="og:image:alt" content="">
-
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icon.png">
-
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#fafafa">
 </head>
-
 <body class="body-background">
+  <div class="download-section" id="entry-download" style="display: none">
+    <div class="download-window">
+      <div class="close-download-window" id="close-download-window">x</div>
+      <p class="txt-center">List of the game version:</p>
+      <div class="code-window" aria-label="Sample code">
+        <pre><code class="debian_terminal txt-wrapping"><span class="text">[+]                           You@WebGame: /hosting/WebGame/Download/Game                          - X</span>
+
+<span class="user">You</span><span class="monkey">@</span><span class="server">WebGame</span><span class="text">:</span><span class="directory">/hosting/WebGame/Download/Game</span><span class="dollar">$</span> <span class="text">ls -lh</span>
+<span class="text">total 1</span>
+<span class="text">-rw-r--r-- 1 root root 254M jun  1  2025 <a class="--span-009DFFFF" href="game/game.zip">'MyGame.rar'</a></span>
+
+<span class="user">You</span><span class="monkey">@</span><span class="server">WebGame</span><span class="text">:</span><span class="directory">/hosting/WebGame/Download/Game</span><span class="dollar">$</span> <span class="text-animation-input">|</span>
+        </code></pre></div>
+    </div>
+  </div>
+
+
   <div class="banner-background">
+    <div class="banner-title">etniqelios Game Site</div>
   </div>
   <div class="banner-background-shadow">
   </div>
@@ -34,30 +51,17 @@
       <div class="header">
         <div class="header-buttons">
           <div class="icon-download">
-            <img src="css/img/download-icon.png" width="35px" height="35px">
+            <img src="css/img/download-icon.png" alt="download-icon" width="35px" height="35px">
           </div>
-          <button href="game/game.zip" class="button-download" id="mouseover-download">download
+          <button class="button-download" id="mouseover-download">download
           </button>
-          <script>
-          let download_button = document.getElementById('mouseover-download')
-
-          let snd_dh = new Audio('audio/hover_download.wav'); // buffers automatically when created
-          let snd_db = new Audio('audio/download.wav')
-
-          download_button.addEventListener('mouseover', (e) => {
-            snd_dh.play();
-          });
-          download_button.addEventListener('click', (e) => {
-            snd_db.play();
-          });
-        </script>
         </div>
         <div class="game-infos">
          size : [254 mb]
         </div>
         <div class="header-description">
           Game made on my own game engine.<br>
-          <font color="gray">@etniqelios</font>
+          <span class="--span-gray">@etniqelios</span>
         </div>
       </div>
       <div class="information" id="more-information">
@@ -65,75 +69,65 @@
           <div class="information-list-button"> [>] </div>
           <div class="information-title"> - more information</div>
         </div>
-        <div class="information-content" id="information-content">Content info</div>
-        <script>
-          let _Click_moreInformation = document.getElementById('click_toShowMoreInformation')
-          let moreInformation = document.getElementById('more-information')
-          let _Show_moreInformation = document.getElementById('information-content')
-          let showInformationBool = false;
-          let snd_i = new Audio('audio/click.wav'); // buffers automatically when created
+        <div class="information-content" id="information-content">
+          <div class="left-content txt-left txt-small">
+            <pre><span class="--span-58AAC2 txt-center">requirements:</span>
 
-          _Click_moreInformation.addEventListener('click', (e) => {
-            snd_i.play();
-            if (!showInformationBool) {
-              moreInformation.style.height = "300px";
-              _Show_moreInformation.style.display = "block";
-              showInformationBool = true;
-            } else {
-              moreInformation.style.height = "40px";
-              _Show_moreInformation.style.display = "none";
-              showInformationBool = false;
-            }
-          });
-        </script>
+  <span class="--span-58AAC2">OS</span><span class="--span-gray">:</span> <span class="--span-white">Windows</span> <span class="--span-gray">/</span> <span class="--span-white">Linux</span>
+  <span class="--span-58AAC2">CPU</span><span class="--span-gray">:</span> <span class="--span-white">2 cores</span>
+  <span class="--span-58AAC2">RAM</span><span class="--span-gray">:</span> <span class="--span-white">4 GB</span>
+  <span class="--span-58AAC2">GPU</span><span class="--span-gray">:</span> <span class="--span-white">1 GB VRAM</span>
+          </pre>
+          </div>
+          <div class="right-content txt-left txt-small">
+            <pre><span class="--span-58AAC2 txt-center">Instalation:</span>
+
+<span class="--span-gray"> - Download game.zip</span>
+<span class="--span-gray"> - Extract and lunch
+   game.exe</span>
+            </pre>
+          </div>
+          <div class="bottom-content txt-left txt-small txt-wrapping">
+            <pre>
+   <span class="--span-white">Game made on my own game engine wrote in</span> [<span class="--span-009DFFFF">c</span><span class="--span-B3D4FC">++</span>] <span class="--span-white">language</span>
+
+       <span class="--span-gray">#Survival #Voxels #RPG #Sandbox #Singleplayer</span></pre>
+          </div>
+        </div>
       </div>
       <div class="links" id="show-links">
         <div class="links-select" id="click_toShowLinks">
           <div class="links-list-button"> [>] </div>
           <div class="links-title"> - author links</div>
         </div>
-        <div class="links-content" id="links-content">links</div>
-        <script>
-          let _Click_links = document.getElementById('click_toShowLinks')
-          let links = document.getElementById('show-links')
-          let _Show_links = document.getElementById('links-content')
-          let showLinksBool = false;
-          let snd_l = new Audio('audio/click.wav'); // buffers automatically when created
-
-          _Click_links.addEventListener('click', (e) => {
-            snd_l.play();
-            if (!showLinksBool) {
-              links.style.height = "100px";
-              _Show_links.style.display = "block";
-              showLinksBool = true;
-            } else {
-              links.style.height = "40px";
-              _Show_links.style.display = "none";
-              showLinksBool = false;
-            }
-          });
-        </script>
+        <div class="links-content" id="links-content">
+          <center>
+            <li class="link youtube">Youtube</li>
+            <li  class="link soundcloud">SoundCloud</li>
+            <li class="link github">GitHub</li>
+            <li  class="link discord">Discord</li>
+          </center>
+        </div>
       </div>
     </div>
     <div class="container-right">
       <div class="section-up">
         <div class="main-header">
-          <a class="main-header-title">------ <font color="#b3d4fc">main content</font> ----------------------------------------</a>
+          <span class="main-header-title">------ <span class="--span-B3D4FC">main content</span> ----------------------------------------</span>
           <div class="main-info"><a>?</a></div>
         </div>
-        <div class="main-welcome">
-          <pre>
-<font color="#2727FBFF">#include </font><font color="#D0464A">&lt;iostream&gt;</font>
+        <div class="code-window" aria-label="Sample code">
+          <pre><code class="cpp_code"><span class="include">#include </span><span class="lib_type">&lt;iostream&gt;</span>
 
-<font color="#2727FBFF">int </font><font color="#B3D4FC">main() {</font>
-  <font color="#B3D4FC">std::string user </font><font color="#A5A5BC">= </font><font color="#328436">"Guest"</font><font color="#B3D4FC">;</font>
-  <font color="#B3D4FC">std::cout </font><font color="#A5A5BC"><< </font><font color="#328436">"Hello " </font><font color="#A5A5BC"><< </font><font color="#B3D4FC">user </font><font color="#A5A5BC"><< </font><font color="#328436">" to my official game website!</font><font color="#2727FBFF">\n</font><font color="#328436">"</font><font color="#B3D4FC">;</font>
-<font color="#B3D4FC">}</font>
-
-<font color="#B3D4FC">>> Hello Guest to my official game website!</font>
-          </pre>
+<span class="var-int">int</span> <span class="function">main</span><span class="type">()</span> <span class="type">{</span>
+  <span class="type">std::string user </span><span class="operators">=</span> <span class="str-value">"Guest"</span><span class="type">;</span>
+  <span class="type">std::cout</span> <span class="operators"><<</span> <span class="str-value">"Hello "</span> <span class="operators"><<</span> <span class="str-value">user</span> <span class="operators"><<</span> <span class="str-value">" to my official game website!</span><span class="newline">\n</span><span class="str-value">"</span><span class="type">;</span>
+<span class="type">}</span></code></pre>
         </div>
-        <div class="main-title">------ <font color="#b3d4fc">about</font> ----------------------------------------------------</div>
+        <div class="output-code">
+          <span class="type">>> Hello Guest to my official game website!</span>
+        </div>
+        <div class="main-title">------ <span class="--span-B3D4FC">about</span> ----------------------------------------------------</div>
         <div class="main-description">
           <div class="image-section">
             game infos
@@ -142,6 +136,13 @@
         </div>
       </div>
     </div>
+  <script src="js/app.js"></script>
+
+  <div class="footer-fixed">
+    <div class="logo-window">
+      <snap class="--span-gray">Creator: Me</snap>
+    </div>
+    <span class="--span-gray">© Copyright 2025</span>
   </div>
 </body>
 </html>
