@@ -46,14 +46,243 @@
   </div>
   <div class="banner-background-shadow">
   </div>
+  <div class="container-game" id="game-browser" style="display: none">
+      <div class="game-header-line">
+          <div class="close-game-section" id="close-game-window">x</div>
+      </div>
+      <div class="screen-game">
+          <div id="status">
+              <div class="loading"><span style="color: white;">MyGame</span> c++</div>
+              <progress id="status-progress"></progress>
+              <div id="status-notice"></div>
+          </div>
+
+          <div class="game">
+              <canvas id="canvas">
+                  Your browser does not support the canvas tag.
+              </canvas>
+          </div>
+
+
+          <noscript>
+              Your browser does not support JavaScript.
+          </noscript>
+          <style>
+              .game {
+                  width: 1180px !important;
+                  height: 620px !important;
+                  margin: auto;
+                  overflow: hidden;
+                  position: relative; /* ważne dla canvas */
+              }
+
+              .loading {
+                  color: #297ee0;
+                  font-size: 30px;
+                  text-align: center;
+                  padding: 100px;
+              }
+              #canvas {
+                  width: 1180px !important;
+                  height: 620px !important;
+                  display: block;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+              }
+
+              #canvas:focus {
+                  outline: none;
+              }
+
+              #status {
+                  margin: auto;
+                  width: 1180px !important;
+                  height: 620px !important;
+              }
+
+              #status, #status-splash, #status-progress {
+                  position: absolute;
+                  left: 0;
+                  right: 0;
+              }
+
+              #status, #status-splash {
+                  top: 0;
+                  bottom: 0;
+              }
+
+              #status-splash {
+                  margin: auto;
+              }
+
+              #status-splash.show-image--false {
+                  display: none;
+              }
+
+              #status-splash.fullsize--true {
+                  height: 100%;
+                  width: 100%;
+                  object-fit: contain;
+              }
+
+              #status-splash.use-filter--false {
+                  image-rendering: pixelated;
+              }
+
+              #status-progress, #status-notice {
+                  display: none;
+              }
+
+              #status-progress {
+                  bottom: 10%;
+                  width: 50%;
+                  margin: 0 auto;
+                  background: rgba(26, 52, 58, 0.52);
+              }
+
+              #status-notice {
+                  color: white;
+                  background: #1d5da6;
+                  text-align: center;
+                  width: 100%;
+                  top: 385px;
+                  bottom: 0;
+                  padding-top: 5px;
+                  padding-bottom: 5px;
+                  position: relative;
+              }
+          </style>
+          <script src="index.js"></script>
+          <script>
+              const GODOT_CONFIG = {
+                  "args": [],
+                  "canvasResizePolicy": 2,
+                  "ensureCrossOriginIsolationHeaders": true,
+                  "executable": "index",
+                  "mainPack": "index.pck", // ← tu podajesz ścieżkę!
+                  "fileSizes": {
+                      "index.pck": 6752,
+                      "index.wasm": 52126319
+                  },
+                  "focusCanvas": true,
+                  "gdextensionLibs": []
+              };              const GODOT_THREADS_ENABLED = false;
+              const engine = new Engine(GODOT_CONFIG);
+
+
+
+              (function () {
+                  const statusOverlay = document.getElementById('status');
+                  const statusProgress = document.getElementById('status-progress');
+                  const statusNotice = document.getElementById('status-notice');
+
+                  let initializing = true;
+                  let statusMode = '';
+
+
+                  function setStatusMode(mode) {
+                      if (statusMode === mode || !initializing) {
+                          return;
+                      }
+                      if (mode === 'hidden') {
+                          statusOverlay.remove();
+                          initializing = false;
+                          return;
+                      }
+                      statusOverlay.style.visibility = 'visible';
+                      statusProgress.style.display = mode === 'progress' ? 'block' : 'none';
+                      statusNotice.style.display = mode === 'notice' ? 'block' : 'none';
+                      statusMode = mode;
+                  }
+
+                  function setStatusNotice(text) {
+                      while (statusNotice.lastChild) {
+                          statusNotice.removeChild(statusNotice.lastChild);
+                      }
+                      const lines = text.split('\n');
+                      lines.forEach((line) => {
+                          statusNotice.appendChild(document.createTextNode(line));
+                          statusNotice.appendChild(document.createElement('br'));
+                      });
+                  }
+
+                  function displayFailureNotice(err) {
+                      console.error(err);
+                      if (err instanceof Error) {
+                          setStatusNotice(err.message);
+                      } else if (typeof err === 'string') {
+                          setStatusNotice(err);
+                      } else {
+                          setStatusNotice('An unknown error occurred.');
+                      }
+                      setStatusMode('notice');
+                      initializing = false;
+                  }
+
+                  const missing = Engine.getMissingFeatures({
+                      threads: GODOT_THREADS_ENABLED,
+                  });
+
+                  if (missing.length !== 0) {
+                      if (GODOT_CONFIG['serviceWorker'] && GODOT_CONFIG['ensureCrossOriginIsolationHeaders'] && 'serviceWorker' in navigator) {
+                          let serviceWorkerRegistrationPromise;
+                          try {
+                              serviceWorkerRegistrationPromise = navigator.serviceWorker.getRegistration();
+                          } catch (err) {
+                              serviceWorkerRegistrationPromise = Promise.reject(new Error('Service worker registration failed.'));
+                          }
+                          // There's a chance that installing the service worker would fix the issue
+                          Promise.race([
+                              serviceWorkerRegistrationPromise.then((registration) => {
+                                  if (registration != null) {
+                                      return Promise.reject(new Error('Service worker already exists.'));
+                                  }
+                                  return registration;
+                              }).then(() => engine.installServiceWorker()),
+                              // For some reason, `getRegistration()` can stall
+                              new Promise((resolve) => {
+                                  setTimeout(() => resolve(), 2000);
+                              }),
+                          ]).then(() => {
+                              // Reload if there was no error.
+                              window.location.reload();
+                          }).catch((err) => {
+                              console.error('Error while registering service worker:', err);
+                          });
+                      } else {
+                          // Display the message as usual
+                          const missingMsg = 'Error\nThe following features required to run Godot projects on the Web are missing:\n';
+                          displayFailureNotice(missingMsg + missing.join('\n'));
+                      }
+                  } else {
+                      setStatusMode('progress');
+                      engine.startGame({
+                          'onProgress': function (current, total) {
+                              if (current > 0 && total > 0) {
+                                  statusProgress.value = current;
+                                  statusProgress.max = total;
+                              } else {
+                                  statusProgress.removeAttribute('value');
+                                  statusProgress.removeAttribute('max');
+                              }
+                          },
+                      }).then(() => {
+                          setStatusMode('hidden');
+                      }, displayFailureNotice);
+                  }
+              }());
+          </script>
+      </div>
+  </div>
   <div class="index-container">
     <div class="container-left">
       <div class="header">
         <div class="header-buttons">
-          <div class="icon-download">
-            <img src="css/img/download-icon.png" alt="download-icon" width="35px" height="35px">
-          </div>
-          <button class="button-download" id="mouseover-download">download
+          <img src="css/img/download-icon.png" alt="download-icon" width="35px" height="35px">
+          <button class="button-enabled" id="download">download
+          </button>
+          <button class="button-enabled" id="playgame">play
           </button>
         </div>
         <div class="game-infos">

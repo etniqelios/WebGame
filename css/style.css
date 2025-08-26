@@ -154,11 +154,46 @@ body {
   }
 }
 
+.screen-game {
+
+}
+
+.container-game {
+  justify-self: center;
+  background-image: url("img/empty-background.png");
+  background-position: center;
+  border: 4px dashed rgba(128, 128, 128, 0.12);
+  width: 1400px;
+  height: auto;
+  position: relative;
+  top: -400px;
+  background-color: #222222;
+  overflow: hidden;
+  animation: forwards ease-in-out 0.5s container_game_show;
+}
+
+@keyframes container_game_show {
+  0% {top: -1000px;}
+  100% {top: -400px; height: 700px;}
+}
+
+.close-game-animation {
+  animation: forwards ease-out 1s container_game_close;
+}
+
+@keyframes container_game_close {
+  0% {top: -400px; height: 700px; opacity: 1}
+  100% {top: 0; opacity: 0; height: 100px; display: none;}
+}
+
+
+
+
 .index-container {
   display: flex;
   justify-content: center;
   position: relative;
-  top: -500px;
+  top: -475px;
 }
 
 
@@ -446,9 +481,7 @@ text-decoration: underline;
 }
 
 .header-buttons {
-  height: 100px;
-  display: grid;
-  justify-content: center;
+  padding: 20px;
 }
 
 .header-description {
@@ -457,16 +490,69 @@ text-decoration: underline;
   justify-content: center;
   position: relative;
 }
-.icon-download {
-  padding-top: 10px;
-}
 
 .game-infos {
+  clear: both;
   font-size: 17px;
   color: #407c8d;
 }
 
-.button-download {
+.game-header-line {
+  border-bottom: 4px dashed rgb(47, 47, 47);
+  width: auto;
+  height: 35px;
+
+}
+
+.close-game-section {
+  width: 14px;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-bottom: 2px;
+  padding-top: 3px;
+  text-align: center;
+  color: white;
+  position: relative;
+  background-image: url("img/empty-background.png");
+  background-position: center;
+  float: right;
+  margin: 5px;
+}
+
+.close-game-section:hover {
+  filter: sepia(100%);
+}
+
+.button-disable {
+  border: 0;
+  background-color: gray;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  position: relative;
+  border-bottom: 4px solid #515151;
+  font-size: larger;
+  top: 0;
+  color: black;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.button-disable-animation {
+  position: relative;
+  animation: ease-in 0.2s button-click-deny;
+}
+
+@keyframes button-click-deny {
+  0% {left: 5px; right: 0}
+  25% {left: 0; right: 5px}
+  50% {left: 5px; right: 0}
+  75% {left: 0; right: 5px}
+  100% {left: 0; right: 0}
+}
+
+.button-enabled {
   border: 0;
   background-color: #407c8d;
   padding-left: 20px;
@@ -482,16 +568,17 @@ text-decoration: underline;
   margin-top: 5px;
 }
 
-.button-download:hover {
+.button-enabled:hover {
   background-color: #58aac2;
   color: #ffffff;
   box-shadow: 0 0 16px 0 #58aac2;
 }
 
-.button-download:focus {
+.button-enabled:focus {
   background-color: #58aac2;
   border-bottom: 0 solid #2d5866;
   color: #1a343a;
+  top: 4px;
 }
 
 .footer-fixed {
@@ -536,7 +623,7 @@ text-decoration: underline;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.72);
-  position: absolute;
+  position: fixed;
 
   z-index: 1000;
 }
@@ -580,6 +667,7 @@ text-decoration: underline;
 .close-download-window:hover {
   filter: sepia(100%);
 }
+
 
 /* ==========================================================================
    <span> color classes and texts
